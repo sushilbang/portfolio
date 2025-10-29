@@ -3,7 +3,7 @@ export const work = [
         "type": "built",
         "title": "POD",
         "description": "POD is designed to transform static PDFs into dynamic, summarized conversational podcasts. The core idea behind it is to make information consumption effortless and engaging, especially for users who prefer audio content over reading lengthy documents. It automates the process of extracting key insights from PDFs, crafting natural-sounding scripts, and converting them into high-quality audio with distinct voices.",
-        "link": "https://podcastpro.ai",
+        "link": "https://podcast-pro-gilt.vercel.app/",
         "technologies": ["FastAPI", "Celery", "Redis", "Supabase", "AWS"]
     },
     {
