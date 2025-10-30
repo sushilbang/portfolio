@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {Inter_Tight, Instrument_Serif} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter_Tight({
   weight: '400',
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}
       >
+        <Analytics/>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"

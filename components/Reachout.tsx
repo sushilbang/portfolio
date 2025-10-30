@@ -35,7 +35,7 @@ export default function Reachout({
   };
 
   return (
-    <div className="pb-8">
+    <div className="pb-8 px-4">
       <div className="text-left w-full">
         <div className="mb-4 sm:mb-6">
           <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-20 mt-4 sm:mt-6">

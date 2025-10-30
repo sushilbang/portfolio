@@ -40,22 +40,22 @@ export default function HeroSection() {
                         </ContentParagraph>
                     </ContentSection>
                     <SectionBorder className="mt-0 pt-0 mb-6" />
-                    <TechStackMarquee className="w-full" />
+                    <TechStackMarquee className="w-full px-4" />
                     <SectionBorder className="mt-0 pt-0 mb-6" />
-                    <p className="text-lg opacity-20 leading-relaxed -tracking-[0.01em] mb-4">
-                        GitHub Contributions <span className="opacity-20">●</span> @sushilbang
-                    </p>
-                    <div className="mb-6">
-                        <ContributionsDisplay
-                            username="sushilbang"
-                            variant="compact"
-                            className="w-full"
-                        />
-                    </div>
+                        <p className="text-lg opacity-20 leading-relaxed -tracking-[0.01em] mb-4 px-4">
+                            GitHub Contributions <span className="opacity-20">●</span> @sushilbang
+                        </p>
+                        <div className="mb-6">
+                            <ContributionsDisplay
+                                username="sushilbang"
+                                variant="compact"
+                                className="w-full px-4"
+                            />
+                        </div>
                     <SectionBorder className="mt-0 pt-0 mb-6" />
-                    <h2 className="text-lg sm:text-xl opacity-20 mt-8 leading-relaxed -tracking-[0.01em] mb-4">
-                        Open Source Contributions <span className="opacity-20">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </h2>
+                        <h2 className="text-lg sm:text-xl opacity-20 mt-8 leading-relaxed -tracking-[0.01em] mb-4 px-4">
+                            Open Source Contributions <span className="opacity-20">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </h2>
                     <OpenSourceContributionsCard />
                     <SectionBorder className="mt-0 pt-0 mb-6" />
                     <Reachout 
