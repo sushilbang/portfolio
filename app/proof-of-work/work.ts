@@ -1,6 +1,13 @@
 export const work = [
     {
         "type": "built",
+        "title": "Canvasphere",
+        "description": "An interactive, minimalist drawing space blending design and creativity — Canvasphere lets you sketch, explore, and express ideas within a sleek, neumorphic interface.",
+        "link": "https://bennisen-inspired.vercel.app",
+        "technologies": ["HTML", "CSS", "Javascript"]
+    },
+    {
+        "type": "built",
         "title": "POD",
         "description": "POD is designed to transform static PDFs into dynamic, summarized conversational podcasts. The core idea behind it is to make information consumption effortless and engaging, especially for users who prefer audio content over reading lengthy documents. It automates the process of extracting key insights from PDFs, crafting natural-sounding scripts, and converting them into high-quality audio with distinct voices.",
         "link": "https://podcast-pro-gilt.vercel.app/",
