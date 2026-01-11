@@ -113,7 +113,7 @@ export default function Home() {
       <div className="border-b border-border">
         <section className="mx-auto max-w-3xl px-6 py-12">
           <blockquote className="text-sm italic leading-relaxed">
-            “If you're good with computers, if you're good at basic mathematics, if you're good at writing, if you're good at speaking, and if you like reading, you're set for life.”
+            “If you&apos;re good with computers, if &apos;re good at basic mathematics, if you&apos;re good at writing, if you&apos;re good at speaking, and if you like reading, you&apos;re set for life.”
           </blockquote>
           <p className="text-right italic mt-3 text-xs text-muted-foreground/70">— Naval Ravikant</p>
         </section>
