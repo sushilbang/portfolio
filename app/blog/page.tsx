@@ -1,43 +1,92 @@
-'use client'
+'use client';
 
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { blogs } from './blog';
 
-export default function Blog() {
-    return (
-        <div className="pt-16 sm:pt-24 pb-16 mx-auto max-w-4xl px-4 sm:px-8">
-            <div className="mb-12">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ letterSpacing: '-0.02em' }}>
-                    Blog
-                </h1>
-                <p className="text-muted-foreground text-sm sm:text-base">
-                    Thoughts on software, startups, and everything in between
-                </p>
-            </div>
+export default function BlogPage() {
+  const router = useRouter();
 
-            <div className="space-y-4">
-                {blogs.map((blog, idx) => (
-                    <a
-                        key={idx}
-                        href={blog.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group block py-4 border-b border-border last:border-b-0 hover:bg-muted/30 dark:hover:bg-muted/10 transition-colors duration-200 px-2 -mx-2"
-                    >
-                        <div className="flex items-start justify-between gap-4">
-                            <p className="text-base text-foreground group-hover:text-primary transition-colors duration-200">
-                                {blog.title}
-                            </p>
-                            <p className="text-sm text-muted-foreground whitespace-nowrap flex-shrink-0">
-                                {new Date(blog.date).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'short',
-                                    day: 'numeric'
-                                })}
-                            </p>
-                        </div>
-                    </a>
-                ))}
-            </div>
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      switch (e.key.toLowerCase()) {
+        case 'h':
+          router.push('/');
+          break;
+        case 'p':
+          router.push('/projects');
+          break;
+        case 'b':
+          router.push('/blog');
+          break;
+        case 'g':
+          window.open('https://github.com/sushilbang', '_blank');
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [router]);
+
+  return (
+    <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+      {/* Header */}
+      <section className="pb-12 border-b border-border">
+        <h1 className="mb-2 text-2xl font-bold tracking-tight sm:text-3xl">
+          Blog
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Thoughts on software, engineering, and everything in between.
+        </p>
+      </section>
+
+      {/* Blog Posts */}
+      <section className="pt-12">
+        <h2 className="mb-6 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          Posts
+        </h2>
+        <div className="space-y-4">
+          {blogs.map((blog, idx) => (
+            <a
+              key={idx}
+              href={blog.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between gap-4"
+            >
+              <h3 className="text-sm group-hover:text-primary transition-colors">
+                {blog.title}
+              </h3>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <time className="text-xs text-muted-foreground">
+                  {new Date(blog.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                <ArrowUpRight
+                  size={12}
+                  className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                />
+              </div>
+            </a>
+          ))}
         </div>
-    )
+
+        {/* Empty State */}
+        {blogs.length === 0 && (
+          <div className="text-center py-8">
+            <p className="text-sm text-muted-foreground">No blog posts yet.</p>
+          </div>
+        )}
+      </section>
+    </div>
+  );
 }

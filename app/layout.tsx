@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
-import {Inter_Tight, Instrument_Serif} from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import { Analytics } from "@vercel/analytics/next"
+import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter_Tight({
-  weight: '400',
-  style: 'normal',
-  subsets: ['latin']
-})
-
-const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-instrument-serif'
-})
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Sushil's Portfolio",
-  description: "Cloned with love",
+  description: "I enjoy building things that live on the internet. Currently focused on contributing to open source and crafting side projects that solve real problems.",
+  openGraph: {
+    title: "Sushil Bang - Engineer",
+    description: "21-year-old engineer building products that matter.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sushil Bang - Engineer",
+    description: "21-year-old engineer building products that matter.",
+  },
 };
 
 export default function RootLayout({
@@ -29,18 +32,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}
-      >
-        <Analytics/>
+      <body className={`${inter.variable} font-sans`} suppressHydrationWarning>
+        <Analytics />
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Full height border container */}
+          <div className="relative min-h-screen">
+            {/* Left border line */}
+            <div className="fixed left-0 top-0 bottom-0 w-px bg-border md:left-[calc(50%-384px)] lg:left-[calc(50%-448px)]" />
+            {/* Right border line */}
+            <div className="fixed right-0 top-0 bottom-0 w-px bg-border md:right-[calc(50%-384px)] lg:right-[calc(50%-448px)]" />
+
+            <Navbar />
+            <main>{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
