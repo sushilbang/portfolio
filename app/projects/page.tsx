@@ -24,6 +24,18 @@ const projects = {
       href: 'https://github.com/sushilbang/ZeroHunger',
       technologies: ['React Native', 'Expo', 'Firebase'],
     },
+    {
+      title: 'devlogr',
+      description: 'A tiny CLI buddy for developers who forget what they did yesterday. Log your progress straight from the terminal, no context-switching needed. Built in Rust because speed matters when you\'re in the zone.',
+      href: 'https://github.com/sushilbang/devlogr',
+      technologies: ['Rust'],
+    },
+    {
+      title: 'shodhak',
+      description: 'My shot at building a research agent that actually digs deep. Feed it a topic and watch it hunt down insights, connect dots, and surface what matters. Think of it as a curious assistant that never gets tired of reading.',
+      href: 'https://github.com/sushilbang/shodhak',
+      technologies: ['TypeScript'],
+    },
   ],
   contributed: [
     {

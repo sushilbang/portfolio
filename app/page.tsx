@@ -26,10 +26,10 @@ const featuredProjects = [
     tags: ['Next.js', 'TypeScript', 'Firebase', 'Groq API'],
   },
   {
-    title: 'ZeroHunger',
-    description: 'Mobile app to prevent food waste by connecting surplus meals with NGOs and people in need.',
-    href: 'https://github.com/sushilbang/ZeroHunger',
-    tags: ['React Native', 'Expo', 'Firebase'],
+    title: 'devlogr',
+    description: 'A tiny CLI buddy for developers who forget what they did yesterday. Log progress straight from the terminal.',
+    href: 'https://github.com/sushilbang/devlogr',
+    tags: ['Rust'],
   },
 ];
 

@@ -31,6 +31,14 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://cal.com/sushil-bang-9zuabv"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+          >
+            Hire Me
+          </a>
         </div>
 
         {/* Desktop Theme Toggle */}
@@ -54,6 +62,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://cal.com/sushil-bang-9zuabv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+            >
+              Hire Me
+            </a>
           </div>
           <ModeToggle />
         </div>
