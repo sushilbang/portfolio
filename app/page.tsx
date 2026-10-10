@@ -1,9 +1,5 @@
-'use client';
-
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import { ArrowUpRight, Github, Linkedin, Twitter, Mail, FileText } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/sushilbang', icon: Github },
@@ -14,20 +10,26 @@ const socialLinks = [
 
 const featuredProjects = [
   {
-    title: 'POD',
-    description: 'Turns PDFs into podcasts. Upload a document, extract key content, and listen to it spoken aloud.',
+    title: 'code-agent',
+    description: 'a desktop coding agent with a local file explorer, monaco editor, persistent chats, streamed responses, and approval-gated file tools.',
+    href: 'https://github.com/sushilbang/code-agent',
+    tags: ['TypeScript', 'Electron', 'React', 'Monaco'],
+  },
+  {
+    title: 'pod',
+    description: 'turns pdfs into podcasts. upload a document, extract key content, and listen to it spoken aloud.',
     href: 'https://pod.sushilbang.xyz/',
     tags: ['FastAPI', 'Celery', 'Redis', 'AWS'],
   },
   {
-    title: 'NeuralPost',
-    description: 'AI-powered blog studio. Whisper an idea and watch a post come alive with live preview streaming.',
+    title: 'neuralpost',
+    description: 'ai-powered blog studio. whisper an idea and watch a post come alive with live preview streaming.',
     href: 'https://neuralpost.sushilbang.xyz/',
     tags: ['Next.js', 'TypeScript', 'Firebase', 'Groq API'],
   },
   {
     title: 'devlogr',
-    description: 'A tiny CLI buddy for developers who forget what they did yesterday. Log progress straight from the terminal.',
+    description: 'a tiny cli buddy for developers who forget what they did yesterday. log progress straight from the terminal.',
     href: 'https://github.com/sushilbang/devlogr',
     tags: ['Rust'],
   },
@@ -41,6 +43,12 @@ const experience = [
     period: 'Apr 6, 2026 – Present',
     description: 'Building agents with Google ADK for business process diagrams, job capability research, and Salesforce stage validation. Prototyped an Atlan semantic context layer to improve agent answer accuracy.',
     technologies: ['Google ADK', 'MCP', 'GCP', 'Atlan'],
+    details: [
+      'Built a Google ADK business process agent that converts business requirement documents into structured JSON for Lucid MCP diagram tools, cutting diagram creation time by about 50% with about 90% diagram accuracy.',
+      'Developed a job capabilities agent that researches role changes across domains, maps progression between individual contributor levels, generates PowerPoint, Excel, and Word artifacts, and uploads them to SharePoint.',
+      'Built a Salesforce stage validation agent with custom APIs to flag opportunities in the wrong stage by comparing opportunity fields against a stakeholder-defined validation matrix.',
+      'Prototyped an Atlan semantic context layer that improved agent answer accuracy by about 40% in evaluations while shorter instructions reduced tokens per query; worked with Agent Engine, Rovo MCP, BigQuery, and other GCP services.',
+    ],
   },
   {
     role: 'Contributor',
@@ -49,6 +57,12 @@ const experience = [
     period: 'Jul 2025 – Jan 2026',
     description: 'Built an event-driven state layer, improved IndexedDB save reliability, and contributed collaboration and editor UI features.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
+    details: [
+      'Designed an event-driven state layer with timestamped changes and a path-based resolver for block creation, reordering, patching, deletion, and document restore.',
+      'Serialized IndexedDB saves through a queue, retained changes arriving during a save, and rolled back in-memory state after failed writes.',
+      'Refactored collaboration handlers to process eight event groups, including block patches, order changes, configuration, and plugin data, before applying remote updates.',
+      'Delivered nine merged pull requests covering desktop and mobile drag and drop, block duplicate and delete menus, responsive controls, Markdown plugin descriptions, and update checks with offline handling.',
+    ],
   },
 ];
 
@@ -69,31 +83,6 @@ const skills = [
 ];
 
 export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
-        return;
-      }
-
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-
-      const key = e.key.toLowerCase();
-
-      if (key === 'h') router.push('/');
-      if (key === 'p') router.push('/projects');
-      if (key === 'b') router.push('/blog');
-      if (key === 'g') window.open('https://github.com/sushilbang', '_blank', 'noopener');
-      if (key === 't') window.open('https://x.com/bang_sushil17', '_blank', 'noopener');
-      if (key === 'l') window.open('https://www.linkedin.com/in/sushil-bang-9b0327284/', '_blank', 'noopener');
-    };
-
-    window.addEventListener('keydown', handleKeyDown, { passive: true });
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [router]);
-
   return (
     <div className="py-16 sm:py-20">
       <div className="border-b border-border">
@@ -110,10 +99,6 @@ export default function Home() {
                 <span>{link.name}</span>
               </a>
             ))}
-            <a href="https://drive.google.com/file/d/1ejKPEj_43_RReGmoNJnN5-74hqMazuJv/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground">
-              <FileText size={14} />
-              <span>Resume</span>
-            </a>
           </div>
         </section>
       </div>
@@ -151,6 +136,17 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
+                <details className="group mt-3">
+                  <summary className="flex w-fit cursor-pointer list-none items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
+                    More info
+                    <ChevronDown size={13} className="transition-transform group-open:rotate-180" />
+                  </summary>
+                  <ul className="mt-3 space-y-2 border-l border-border pl-4 text-xs leading-relaxed text-muted-foreground">
+                    {exp.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                </details>
               </div>
             ))}
           </div>
@@ -199,24 +195,15 @@ export default function Home() {
 
       <div className="border-b border-border">
         <section className="mx-auto max-w-3xl px-6 py-12">
-          <h2 className="mb-6 text-xs font-medium uppercase tracking-wider text-muted-foreground">Keyboard Shortcuts</h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {[
-              ['H', 'Home'],
-              ['P', 'Projects'],
-              ['B', 'Blog'],
-              ['G', 'GitHub'],
-              ['T', 'Twitter'],
-              ['L', 'LinkedIn'],
-            ].map(([key, label]) => (
-              <div key={key} className="flex items-center gap-2">
-                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground">
-                  {key}
-                </kbd>
-                <span className="text-xs">{label}</span>
-              </div>
-            ))}
-          </div>
+          <h2 className="mb-6 text-xs font-medium uppercase tracking-wider text-muted-foreground">Contact</h2>
+          <p className="mb-3 text-sm">Have a project, opportunity, or idea you&apos;d like to discuss?</p>
+          <a
+            href="mailto:sushilbang17@gmail.com"
+            className="inline-flex items-center gap-2 text-sm font-medium hover:underline"
+          >
+            <Mail size={15} />
+            sushilbang17@gmail.com
+          </a>
         </section>
       </div>
 

@@ -1,46 +1,48 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = {
   built: [
     {
-      title: 'POD',
-      description: 'POD turns dusty PDFs into lively, bite-sized podcasts. Upload a document and it pulls out the gold, writes a smooth script, and speaks it aloud in clear, distinct voices. Perfect for anyone who\'d rather listen than read.',
+      title: 'code-agent',
+      description: 'a desktop coding-agent harness with a local file explorer, monaco editor, persistent chats, streamed openai responses api output, and approval-gated file tools with reviewable diffs and workspace protection.',
+      href: 'https://github.com/sushilbang/code-agent',
+      technologies: ['TypeScript', 'Electron', 'React', 'Monaco'],
+    },
+    {
+      title: 'pod',
+      description: 'pod turns dusty pdfs into lively, bite-sized podcasts. upload a document and it pulls out the gold, writes a smooth script, and speaks it aloud in clear, distinct voices. perfect for anyone who\'d rather listen than read.',
       href: 'https://pod.sushilbang.xyz/',
       technologies: ['FastAPI', 'Celery', 'Redis', 'Supabase', 'AWS'],
     },
     {
-      title: 'NeuralPost',
-      description: 'Your pocket-sized blog studio. Just whisper an idea and watch a stunning post come alive in seconds: crisp words and a live preview streaming as it writes. All your posts chill in a searchable library. Switch vibes in a click from cozy chai-theme to neon nights or clean minimal.',
+      title: 'neuralpost',
+      description: 'your pocket-sized blog studio. just whisper an idea and watch a stunning post come alive in seconds: crisp words and a live preview streaming as it writes. all your posts chill in a searchable library. switch vibes in a click from cozy chai-theme to neon nights or clean minimal.',
       href: 'https://neuralpost.sushilbang.xyz/',
       technologies: ['Next.js', 'TypeScript', 'React', 'Firebase', 'Firestore', 'Groq API', 'Tailwind CSS'],
     },
     {
-      title: 'ZeroHunger',
-      description: 'A simple app to stop food waste. List surplus meals, connect with nearby NGOs or people in need, and donate with a tap. Built for LaTrobe TIGC and backed with 27,000 INR in funding.',
+      title: 'zerohunger',
+      description: 'a simple app to stop food waste. list surplus meals, connect with nearby ngos or people in need, and donate with a tap. built for latrobe tigc and backed with 27,000 inr in funding.',
       href: 'https://github.com/sushilbang/ZeroHunger',
       technologies: ['React Native', 'Expo', 'Firebase'],
     },
     {
       title: 'devlogr',
-      description: 'A tiny CLI buddy for developers who forget what they did yesterday. Log your progress straight from the terminal, no context-switching needed. Built in Rust because speed matters when you\'re in the zone.',
+      description: 'a tiny cli buddy for developers who forget what they did yesterday. log your progress straight from the terminal, no context-switching needed. built in rust because speed matters when you\'re in the zone.',
       href: 'https://github.com/sushilbang/devlogr',
       technologies: ['Rust'],
     },
     {
       title: 'shodhak',
-      description: 'My shot at building a research agent that actually digs deep. Feed it a topic and watch it hunt down insights, connect dots, and surface what matters. Think of it as a curious assistant that never gets tired of reading.',
+      description: 'my shot at building a research agent that actually digs deep. feed it a topic and watch it hunt down insights, connect dots, and surface what matters. think of it as a curious assistant that never gets tired of reading.',
       href: 'https://github.com/sushilbang/shodhak',
       technologies: ['TypeScript'],
     },
   ],
   contributed: [
     {
-      title: 'Wisk',
-      description: 'A lightweight, plugin-powered document editor built with pure vanilla JavaScript. Clean, fast, and made for tinkerers. I contributed drag-and-drop mobile support, fixed key handlers, and improved various UI components.',
+      title: 'wisk',
+      description: 'a lightweight, plugin-powered document editor built with pure vanilla javascript. clean, fast, and made for tinkerers. i contributed drag-and-drop mobile support, fixed key handlers, and improved various ui components.',
       href: 'https://wisk.cc',
       technologies: ['HTML', 'CSS', 'JavaScript'],
     },
@@ -48,34 +50,6 @@ const projects = {
 };
 
 export default function ProjectsPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      switch (e.key.toLowerCase()) {
-        case 'h':
-          router.push('/');
-          break;
-        case 'p':
-          router.push('/projects');
-          break;
-        case 'b':
-          router.push('/blog');
-          break;
-        case 'g':
-          window.open('https://github.com/sushilbang', '_blank');
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [router]);
-
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
       {/* Header */}

@@ -1,39 +1,7 @@
-'use client';
-
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { blogs } from './blog';
 
 export default function BlogPage() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      switch (e.key.toLowerCase()) {
-        case 'h':
-          router.push('/');
-          break;
-        case 'p':
-          router.push('/projects');
-          break;
-        case 'b':
-          router.push('/blog');
-          break;
-        case 'g':
-          window.open('https://github.com/sushilbang', '_blank');
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [router]);
-
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
       {/* Header */}
