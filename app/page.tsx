@@ -35,11 +35,19 @@ const featuredProjects = [
 
 const experience = [
   {
+    role: 'AI Engineer Intern',
+    company: 'SailPoint',
+    companyUrl: 'https://www.sailpoint.com/',
+    period: 'Apr 6, 2026 – Present',
+    description: 'Building agents with Google ADK for business process diagrams, job capability research, and Salesforce stage validation. Prototyped an Atlan semantic context layer to improve agent answer accuracy.',
+    technologies: ['Google ADK', 'MCP', 'GCP', 'Atlan'],
+  },
+  {
     role: 'Contributor',
     company: 'Wisk',
     companyUrl: 'https://wisk.cc',
-    period: 'Present',
-    description: 'Contributing to a lightweight, plugin-powered document editor.',
+    period: 'Jul 2025 – Jan 2026',
+    description: 'Built an event-driven state layer, improved IndexedDB save reliability, and contributed collaboration and editor UI features.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
   },
 ];
@@ -113,7 +121,7 @@ export default function Home() {
       <div className="border-b border-border">
         <section className="mx-auto max-w-3xl px-6 py-12">
           <blockquote className="text-sm italic leading-relaxed">
-            “If you&apos;re good with computers, if &apos;re good at basic mathematics, if you&apos;re good at writing, if you&apos;re good at speaking, and if you like reading, you&apos;re set for life.”
+            “If you&apos;re good with computers, if you&apos;re good at basic mathematics, if you&apos;re good at writing, if you&apos;re good at speaking, and if you like reading, you&apos;re set for life.”
           </blockquote>
           <p className="text-right italic mt-3 text-xs text-muted-foreground/70">— Naval Ravikant</p>
         </section>
@@ -122,28 +130,30 @@ export default function Home() {
       <div className="border-b border-border">
         <section className="mx-auto max-w-3xl px-6 py-12">
           <h2 className="mb-6 text-xs font-medium uppercase tracking-wider text-muted-foreground">Experience</h2>
-          {experience.map((exp) => (
-            <div key={exp.company}>
-              <div className="flex flex-col sm:flex-row sm:justify-between">
-                <div className="text-sm">
-                  <span className="font-medium">{exp.role}</span>
-                  <span className="text-muted-foreground"> at </span>
-                  <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
-                    {exp.company}
-                  </a>
+          <div className="space-y-6">
+            {experience.map((exp) => (
+              <div key={exp.company}>
+                <div className="flex flex-col sm:flex-row sm:justify-between">
+                  <div className="text-sm">
+                    <span className="font-medium">{exp.role}</span>
+                    <span className="text-muted-foreground"> at </span>
+                    <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:underline">
+                      {exp.company}
+                    </a>
+                  </div>
+                  <span className="text-xs text-muted-foreground">{exp.period}</span>
                 </div>
-                <span className="text-xs text-muted-foreground">{exp.period}</span>
+                <p className="mt-1.5 text-xs">{exp.description}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {exp.technologies.map((tech) => (
+                    <span key={tech} className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <p className="mt-1.5 text-xs">{exp.description}</p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {exp.technologies.map((tech) => (
-                  <span key={tech} className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
       </div>
 
