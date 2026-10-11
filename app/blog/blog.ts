@@ -26,7 +26,10 @@ export function getPosts(): BlogPost[] {
 
       return [{ slug, title: heading.slice(2), date, content: body.join('\n').trim() }];
     })
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => {
+      const dateOrder = b.date.localeCompare(a.date);
+      return dateOrder || b.slug.localeCompare(a.slug);
+    });
 }
 
 export function getPost(slug: string): BlogPost | undefined {
