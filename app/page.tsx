@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ArrowUpRight, ChevronDown, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { ExperienceDetailsDrawer } from '@/components/experience-details-drawer';
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/sushilbang', icon: Github },
@@ -116,17 +117,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <details className="group mt-3">
-                  <summary className="flex w-fit cursor-pointer list-none items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground [&::-webkit-details-marker]:hidden">
-                    More info
-                    <ChevronDown size={13} className="transition-transform group-open:rotate-180" />
-                  </summary>
-                  <ul className="mt-3 space-y-2 border-l border-border pl-4 text-xs leading-relaxed text-muted-foreground">
-                    {exp.details.map((detail) => (
-                      <li key={detail}>{detail}</li>
-                    ))}
-                  </ul>
-                </details>
+                <ExperienceDetailsDrawer {...exp} />
               </div>
             ))}
           </div>
