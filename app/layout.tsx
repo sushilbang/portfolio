@@ -11,16 +11,11 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: "Sushil's Portfolio",
-  description: "I enjoy building things that live on the internet. Currently focused on contributing to open source and crafting side projects that solve real problems.",
+  description: "I enjoy building.",
   openGraph: {
     title: "Sushil Bang - Engineer",
-    description: "21-year-old engineer building products that matter.",
+    description: "22-year-old engineer building products that matter.",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sushil Bang - Engineer",
-    description: "21-year-old engineer building products that matter.",
   },
 };
 

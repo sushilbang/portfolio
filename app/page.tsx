@@ -17,9 +17,9 @@ const featuredProjects = [
   },
   {
     title: 'pod',
-    description: 'turns pdfs into podcasts. upload a document, extract key content, and listen to it spoken aloud.',
+    description: 'an electron desktop app that turns text-based pdfs into two-voice podcasts and saves the generated mp3 and script locally.',
     href: 'https://github.com/sushilbang/pod',
-    tags: ['FastAPI', 'Celery', 'Redis', 'AWS'],
+    tags: ['Electron', 'TypeScript', 'Python', 'ElevenLabs'],
   },
   {
     title: 'devlogr',
@@ -42,20 +42,6 @@ const experience = [
       'Developed a job capabilities agent that researches role changes across domains, maps progression between individual contributor levels, generates PowerPoint, Excel, and Word artifacts, and uploads them to SharePoint.',
       'Built a Salesforce stage validation agent with custom APIs to flag opportunities in the wrong stage by comparing opportunity fields against a stakeholder-defined validation matrix.',
       'Prototyped an Atlan semantic context layer that improved agent answer accuracy by about 40% in evaluations while shorter instructions reduced tokens per query; worked with Agent Engine, Rovo MCP, BigQuery, and other GCP services.',
-    ],
-  },
-  {
-    role: 'Contributor',
-    company: 'Wisk',
-    companyUrl: 'https://wisk.cc',
-    period: 'Jul 2025 – Jan 2026',
-    description: 'Built an event-driven state layer, improved IndexedDB save reliability, and contributed collaboration and editor UI features.',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    details: [
-      'Designed an event-driven state layer with timestamped changes and a path-based resolver for block creation, reordering, patching, deletion, and document restore.',
-      'Serialized IndexedDB saves through a queue, retained changes arriving during a save, and rolled back in-memory state after failed writes.',
-      'Refactored collaboration handlers to process eight event groups, including block patches, order changes, configuration, and plugin data, before applying remote updates.',
-      'Delivered nine merged pull requests covering desktop and mobile drag and drop, block duplicate and delete menus, responsive controls, Markdown plugin descriptions, and update checks with offline handling.',
     ],
   },
 ];
@@ -150,7 +136,7 @@ export default function Home() {
       <div className="border-b border-border">
         <section className="mx-auto max-w-3xl px-6 py-12">
           <div className="mb-6 flex justify-between">
-            <h2 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Featured Projects</h2>
+            <h2 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Featured Work</h2>
             <Link href="/projects" className="flex items-center gap-1 text-xs text-muted-foreground">
               View all <ArrowUpRight size={12} />
             </Link>
@@ -202,10 +188,7 @@ export default function Home() {
       </div>
 
       <footer className="mx-auto max-w-3xl px-6 pt-12">
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
-          <p className="text-xs">
-            Design inspired by <a href="https://chanhdai.com" target="_blank" className="underline">chanhdai.com</a>
-          </p>
+        <div className="flex justify-end">
           <div className="flex gap-3">
             {socialLinks.slice(0, 3).map((link) => (
               <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer">

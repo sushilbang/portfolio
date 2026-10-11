@@ -1,44 +1,82 @@
 import { ArrowUpRight } from 'lucide-react';
+import { ProjectDetailsDrawer } from '@/components/project-details-drawer';
 
 const projects = {
   built: [
     {
       title: 'code-agent',
-      description: 'a desktop coding-agent harness with a local file explorer, monaco editor, persistent chats, streamed openai responses api output, and approval-gated file tools with reviewable diffs and workspace protection.',
+      description: 'a desktop coding-agent workspace with a local file explorer, monaco editor, persistent chats, streamed openai responses, and approval-gated file tools.',
       href: 'https://github.com/sushilbang/code-agent',
       technologies: ['TypeScript', 'Electron', 'React', 'Monaco'],
+      details: [
+        'Combines a local file explorer and Monaco editor with resizable, collapsible explorer and agent panes inside an Electron desktop app.',
+        'Streams OpenAI Responses with Markdown rendering, expandable tool activity, model selection, and optional reasoning summaries.',
+        'Supports bounded file and Git inspection, workspace commands, and approval-gated file changes with contextual unified diffs.',
+        'Protects API keys with Electron safeStorage and keeps chats, permissions, context settings, and project memory on the local machine.',
+      ],
     },
     {
       title: 'pod',
-      description: 'pod turns dusty pdfs into lively, bite-sized podcasts. upload a document and it pulls out the gold, writes a smooth script, and speaks it aloud in clear, distinct voices. perfect for anyone who\'d rather listen than read.',
+      description: 'an electron desktop app that turns text-based pdfs into two-voice podcasts and saves the generated mp3 and script directly to a folder you choose.',
       href: 'https://github.com/sushilbang/pod',
-      technologies: ['FastAPI', 'Celery', 'Redis', 'Supabase', 'AWS'],
+      technologies: ['Electron', 'TypeScript', 'Python', 'ElevenLabs'],
+      details: [
+        'Uses Gemini, OpenAI, or Anthropic to write the podcast script, with ElevenLabs generating the two distinct voices.',
+        'Runs without an account, database, Redis, server, or cloud storage; generated MP3 and script files stay in the selected output folder.',
+        'Stores provider keys with Electron\'s operating-system-backed encrypted storage and only sends the selected provider key during generation.',
+        'Bundles its Python worker into the Windows installer, includes ffmpeg, and limits extracted input to 40,000 characters to bound API usage.',
+      ],
     },
     {
       title: 'zerohunger',
       description: 'a simple app to stop food waste. list surplus meals, connect with nearby ngos or people in need, and donate with a tap. built for latrobe tigc and backed with 27,000 inr in funding.',
-      href: 'https://github.com/sushilbang/ZeroHunger',
+      href: 'https://github.com/sushilbang/zero-hunger',
       technologies: ['React Native', 'Expo', 'Firebase'],
+      details: [
+        'Built as an Expo and React Native app for tracking food inventory and turning surplus items into donations.',
+        'Includes donation, inventory, expiry-alert, recipe, profile, onboarding, and camera-scanner experiences.',
+        'Uses Firebase authentication and Firestore with protected routes, email verification, and persisted user sessions.',
+        'Supports background tasks and notifications so users can act on expiring food before it becomes waste.',
+      ],
     },
     {
       title: 'devlogr',
       description: 'a tiny cli buddy for developers who forget what they did yesterday. log your progress straight from the terminal, no context-switching needed. built in rust because speed matters when you\'re in the zone.',
       href: 'https://github.com/sushilbang/devlogr',
       technologies: ['Rust'],
+      details: [
+        'Adds timestamped development notes from the terminal with a simple devlogr add command.',
+        'Lists the complete project history with devlogr list, making standups and progress recaps easier to write.',
+        'Stores entries in a .devlog.json file in the current directory, so each project keeps an independent log.',
+        'Ships as a lightweight Rust CLI that can be installed directly through Cargo.',
+      ],
     },
     {
       title: 'shodhak',
-      description: 'my shot at building a research agent that actually digs deep. feed it a topic and watch it hunt down insights, connect dots, and surface what matters. think of it as a curious assistant that never gets tired of reading.',
+      description: 'a typescript research-agent backend that searches scholarly sources, analyzes papers, and builds cited literature reviews with an openai-powered agent loop.',
       href: 'https://github.com/sushilbang/shodhak',
-      technologies: ['TypeScript'],
+      technologies: ['TypeScript', 'Express', 'PostgreSQL', 'OpenAI'],
+      details: [
+        'Searches arXiv, Crossref, OpenAlex, PubMed, and Semantic Scholar through a shared paper-provider interface.',
+        'Combines query refinement and expansion with embeddings, reranking, extraction, knowledge storage, and context compression.',
+        'Provides agent tools for search, paper analysis, context, and knowledge workflows, exposed through an Express API.',
+        'Includes dedicated retrieval, generation, citation, fact, race, and deep-research benchmarks alongside Vitest coverage.',
+      ],
     },
   ],
   contributed: [
     {
       title: 'wisk',
-      description: 'a lightweight, plugin-powered document editor built with pure vanilla javascript. clean, fast, and made for tinkerers. i contributed drag-and-drop mobile support, fixed key handlers, and improved various ui components.',
-      href: 'https://wisk.cc',
+      description: 'an offline-first, plugin-based document editor built with vanilla javascript and web components, with block editing, collaboration, sync, and rich content tools.',
+      href: 'https://github.com/sohzm/wisk',
       technologies: ['HTML', 'CSS', 'JavaScript'],
+      contributionPeriod: 'Jul 2025 – Jan 2026',
+      details: [
+        'Designed an event-driven state layer with timestamped changes and a path-based resolver for block creation, reordering, patching, deletion, and document restore.',
+        'Serialized IndexedDB saves through a queue, retained changes arriving during a save, and rolled back in-memory state after failed writes.',
+        'Refactored collaboration handlers to process eight event groups, including block patches, order changes, configuration, and plugin data, before applying remote updates.',
+        'Delivered contributions covering desktop and mobile drag and drop, block duplicate and delete menus, responsive controls, Markdown plugin descriptions, and update checks with offline handling.',
+      ],
     },
   ],
 };
@@ -49,7 +87,7 @@ export default function ProjectsPage() {
       {/* Header */}
       <section className="pb-12 border-b border-border">
         <h1 className="mb-2 text-2xl font-bold tracking-tight sm:text-3xl">
-          Projects
+          Work
         </h1>
         <p className="text-sm text-muted-foreground">
           A collection of things I&apos;ve built and contributed to.
@@ -63,38 +101,36 @@ export default function ProjectsPage() {
         </h2>
         <div className="space-y-6">
           {projects.built.map((project) => (
-            <a
-              key={project.title}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex-1">
-                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            <div key={project.title}>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5"
+              >
+                <h3 className="text-sm font-medium transition-colors group-hover:text-primary">
+                  {project.title}
+                </h3>
                 <ArrowUpRight
                   size={14}
-                  className="flex-shrink-0 mt-0.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                  className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
                 />
+              </a>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                {project.description}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-            </a>
+              <ProjectDetailsDrawer {...project} />
+            </div>
           ))}
         </div>
       </section>
@@ -106,18 +142,26 @@ export default function ProjectsPage() {
         </h2>
         <div className="space-y-6">
           {projects.contributed.map((project) => (
-            <a
-              key={project.title}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
+            <div key={project.title}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
-                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-1.5"
+                  >
+                    <h3 className="text-sm font-medium transition-colors group-hover:text-primary">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight
+                      size={14}
+                      className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                    />
+                  </a>
+                  <p className="mt-1 text-[10px] text-muted-foreground">
+                    Contributor · {project.contributionPeriod}
+                  </p>
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                     {project.description}
                   </p>
@@ -131,13 +175,10 @@ export default function ProjectsPage() {
                       </span>
                     ))}
                   </div>
+                  <ProjectDetailsDrawer {...project} />
                 </div>
-                <ArrowUpRight
-                  size={14}
-                  className="flex-shrink-0 mt-0.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
-                />
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
