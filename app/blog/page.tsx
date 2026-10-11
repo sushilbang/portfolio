@@ -1,7 +1,10 @@
-import { ArrowUpRight } from 'lucide-react';
-import { blogs } from './blog';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { formatPostDate, getPosts } from './blog';
 
 export default function BlogPage() {
+  const posts = getPosts();
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
       {/* Header */}
@@ -20,36 +23,30 @@ export default function BlogPage() {
           Posts
         </h2>
         <div className="space-y-4">
-          {blogs.map((blog, idx) => (
-            <a
-              key={idx}
-              href={blog.link}
-              target="_blank"
-              rel="noopener noreferrer"
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
               className="group flex items-center justify-between gap-4"
             >
               <h3 className="text-sm group-hover:text-primary transition-colors">
-                {blog.title}
+                {post.title}
               </h3>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <time className="text-xs text-muted-foreground">
-                  {new Date(blog.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                  })}
+                <time dateTime={post.date} className="text-xs text-muted-foreground">
+                  {formatPostDate(post.date)}
                 </time>
-                <ArrowUpRight
+                <ArrowRight
                   size={12}
-                  className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                  className="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
                 />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* Empty State */}
-        {blogs.length === 0 && (
+        {posts.length === 0 && (
           <div className="text-center py-8">
             <p className="text-sm text-muted-foreground">No blog posts yet.</p>
           </div>

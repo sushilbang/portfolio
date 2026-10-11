@@ -1,22 +1,43 @@
-export const blogs = [
-    {
-        "title": "a coding agent is a context engine before it's an editor",
-        "link": "https://sushil.bearblog.dev/a-coding-agent-is-a-context-engine-before-its-an-editor/",
-        "date": "2026-10-11"
-    },
-    {
-        "title": "are fastapi and celery enough?",
-        "link": "https://sushil.bearblog.dev/fastapi-and-celery/",
-        "date": "2025-10-29"
-    },
-    {
-        "title": "do i really understand authentication?",
-        "link": "https://sushil.bearblog.dev/do-i-really-understand-authentication/",
-        "date": "2025-10-27"
-    },
-    {
-        "title": "what is redis and some of its use cases",
-        "link": "https://sushil.bearblog.dev/redis/",
-        "date": "2025-10-26"
-    }
-]
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  date: string;
+  content: string;
+};
+
+const postsDirectory = path.join(process.cwd(), 'app', 'blog', 'posts');
+const postFilename = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
+
+export function getPosts(): BlogPost[] {
+  return readdirSync(postsDirectory)
+    .flatMap((filename) => {
+      const match = filename.match(postFilename);
+      if (!match) return [];
+
+      const [, date, slug] = match;
+      const markdown = readFileSync(path.join(postsDirectory, filename), 'utf8').trim();
+      const [heading, ...body] = markdown.split(/\r?\n/);
+      if (!heading.startsWith('# ')) {
+        throw new Error(`Blog post ${filename} must start with an H1 title`);
+      }
+
+      return [{ slug, title: heading.slice(2), date, content: body.join('\n').trim() }];
+    })
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getPost(slug: string): BlogPost | undefined {
+  return getPosts().find((post) => post.slug === slug);
+}
+
+export function formatPostDate(date: string): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T00:00:00Z`));
+}

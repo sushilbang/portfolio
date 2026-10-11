@@ -22,12 +22,6 @@ const featuredProjects = [
     href: 'https://github.com/sushilbang/pod',
     tags: ['Electron', 'TypeScript', 'Python', 'ElevenLabs'],
   },
-  {
-    title: 'devlogr',
-    description: 'a tiny cli buddy for developers who forget what they did yesterday. log progress straight from the terminal.',
-    href: 'https://github.com/sushilbang/devlogr',
-    tags: ['Rust'],
-  },
 ];
 
 const experience = [

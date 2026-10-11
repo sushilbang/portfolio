@@ -28,6 +28,18 @@ const projects = {
       ],
     },
     {
+      title: 'claude-tts',
+      description: 'a cli tool that turns claude responses or any piped text into natural speech while keeping the original text visible in the terminal.',
+      href: 'https://github.com/sushilbang/claude-tts',
+      technologies: ['JavaScript', 'Node.js', 'Groq', 'Edge TTS'],
+      details: [
+        'Passes stdin through to stdout, then cleans the text for speech and plays generated audio in the background with ffplay.',
+        'Sends complex formatting such as code blocks, lists, and headings to Groq with Qwen3-32B for a speakable script; simple text uses direct cleanup.',
+        'Generates audio with Microsoft Edge TTS and supports custom voices, dry runs, and saving audio without playback.',
+        'Can run as a Claude Code Stop hook so responses are spoken automatically after each turn.',
+      ],
+    },
+    {
       title: 'zerohunger',
       description: 'a simple app to stop food waste. list surplus meals, connect with nearby ngos or people in need, and donate with a tap. built for latrobe tigc and backed with 27,000 inr in funding.',
       href: 'https://github.com/sushilbang/zero-hunger',
