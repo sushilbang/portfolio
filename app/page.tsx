@@ -18,14 +18,8 @@ const featuredProjects = [
   {
     title: 'pod',
     description: 'turns pdfs into podcasts. upload a document, extract key content, and listen to it spoken aloud.',
-    href: 'https://pod.sushilbang.xyz/',
+    href: 'https://github.com/sushilbang/pod',
     tags: ['FastAPI', 'Celery', 'Redis', 'AWS'],
-  },
-  {
-    title: 'neuralpost',
-    description: 'ai-powered blog studio. whisper an idea and watch a post come alive with live preview streaming.',
-    href: 'https://neuralpost.sushilbang.xyz/',
-    tags: ['Next.js', 'TypeScript', 'Firebase', 'Groq API'],
   },
   {
     title: 'devlogr',

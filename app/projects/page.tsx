@@ -11,14 +11,8 @@ const projects = {
     {
       title: 'pod',
       description: 'pod turns dusty pdfs into lively, bite-sized podcasts. upload a document and it pulls out the gold, writes a smooth script, and speaks it aloud in clear, distinct voices. perfect for anyone who\'d rather listen than read.',
-      href: 'https://pod.sushilbang.xyz/',
+      href: 'https://github.com/sushilbang/pod',
       technologies: ['FastAPI', 'Celery', 'Redis', 'Supabase', 'AWS'],
-    },
-    {
-      title: 'neuralpost',
-      description: 'your pocket-sized blog studio. just whisper an idea and watch a stunning post come alive in seconds: crisp words and a live preview streaming as it writes. all your posts chill in a searchable library. switch vibes in a click from cozy chai-theme to neon nights or clean minimal.',
-      href: 'https://neuralpost.sushilbang.xyz/',
-      technologies: ['Next.js', 'TypeScript', 'React', 'Firebase', 'Firestore', 'Groq API', 'Tailwind CSS'],
     },
     {
       title: 'zerohunger',

@@ -20,11 +20,28 @@
 # production
 /build
 
+# deployment and tool caches
+/.vercel/
+/.turbo/
+/.cache/
+.eslintcache
+
 # misc
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.pem
+*.bak
+*.swp
+*.swo
+
+# local editors and AI tools
+/.vscode/
+/.idea/
+/.claude/
 
 # debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -32,6 +49,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # typescript
 *.tsbuildinfo

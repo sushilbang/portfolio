@@ -11,6 +11,42 @@ type DocumentWithViewTransition = Document & {
   };
 };
 
+type WindowWithWebkitAudio = Window & {
+  webkitAudioContext?: typeof AudioContext;
+};
+
+function playThemeChangeSound(nextTheme: 'light' | 'dark') {
+  try {
+    const AudioContextClass = window.AudioContext
+      ?? (window as WindowWithWebkitAudio).webkitAudioContext;
+
+    if (!AudioContextClass) return;
+
+    const audioContext = new AudioContextClass();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const now = audioContext.currentTime;
+    const startFrequency = nextTheme === 'light' ? 420 : 620;
+    const endFrequency = nextTheme === 'light' ? 720 : 340;
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(startFrequency, now);
+    oscillator.frequency.exponentialRampToValueAtTime(endFrequency, now + 0.12);
+
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.07, now + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(now);
+    oscillator.stop(now + 0.15);
+    oscillator.addEventListener('ended', () => void audioContext.close(), { once: true });
+  } catch {
+    // Theme switching should still work if audio is unavailable or blocked.
+  }
+}
+
 export function ModeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
@@ -39,6 +75,8 @@ export function ModeToggle() {
     const nextTheme = isDark ? 'light' : 'dark';
     const viewTransitionDocument = document as DocumentWithViewTransition;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    playThemeChangeSound(nextTheme);
 
     if (!viewTransitionDocument.startViewTransition || reduceMotion) {
       setTheme(nextTheme);
