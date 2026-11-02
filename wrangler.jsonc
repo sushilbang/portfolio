@@ -8,5 +8,9 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "routes": [
+    { "pattern": "sushilbang.com", "custom_domain": true },
+    { "pattern": "www.sushilbang.com", "custom_domain": true }
+  ],
   "observability": { "enabled": true }
 }
