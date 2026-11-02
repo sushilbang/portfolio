@@ -89,14 +89,20 @@ export function ProjectDetailsDrawer({
               <Button variant="outline">Close</Button>
             </DrawerClose>
             {sourceHref && (
-              <Button asChild variant="outline">
+              <Button
+                asChild
+                className="border border-white/20 bg-black text-white hover:bg-black/80"
+              >
                 <a href={sourceHref} target="_blank" rel="noopener noreferrer">
                   View on GitHub
                   <ArrowUpRight size={14} />
                 </a>
               </Button>
             )}
-            <Button asChild>
+            <Button
+              asChild
+              className={sourceHref ? "border border-black/20 bg-white text-black hover:bg-white/80" : undefined}
+            >
               <a href={href} target="_blank" rel="noopener noreferrer">
                 {sourceHref ? "Visit website" : "View on GitHub"}
                 <ArrowUpRight size={14} />
