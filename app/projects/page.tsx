@@ -19,7 +19,8 @@ const projects = {
     {
       title: 'pod',
       description: 'an electron desktop app that turns text-based pdfs into two-voice podcasts and saves the generated mp3 and script directly to a folder you choose.',
-      href: 'https://github.com/sushilbang/pod',
+      href: 'https://pod.sushilbang.com',
+      sourceHref: 'https://github.com/sushilbang/pod',
       technologies: ['Electron', 'TypeScript', 'Python', 'ElevenLabs'],
       details: [
         'Uses Gemini, OpenAI, or Anthropic to write the podcast script, with ElevenLabs generating the two distinct voices.',
