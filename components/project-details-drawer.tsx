@@ -18,6 +18,7 @@ type ProjectDetailsDrawerProps = {
   title: string
   description: string
   href: string
+  sourceHref?: string
   technologies: string[]
   details: string[]
   contributionPeriod?: string
@@ -27,6 +28,7 @@ export function ProjectDetailsDrawer({
   title,
   description,
   href,
+  sourceHref,
   technologies,
   details,
   contributionPeriod,
@@ -86,9 +88,17 @@ export function ProjectDetailsDrawer({
             <DrawerClose asChild>
               <Button variant="outline">Close</Button>
             </DrawerClose>
+            {sourceHref && (
+              <Button asChild variant="outline">
+                <a href={sourceHref} target="_blank" rel="noopener noreferrer">
+                  View on GitHub
+                  <ArrowUpRight size={14} />
+                </a>
+              </Button>
+            )}
             <Button asChild>
               <a href={href} target="_blank" rel="noopener noreferrer">
-                View on GitHub
+                {sourceHref ? "Visit website" : "View on GitHub"}
                 <ArrowUpRight size={14} />
               </a>
             </Button>
