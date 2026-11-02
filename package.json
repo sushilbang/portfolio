@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "generate-posts": "node scripts/generate-posts.mjs",
+    "predev": "node scripts/generate-posts.mjs",
+    "prebuild": "node scripts/generate-posts.mjs"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.0",

@@ -1,5 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs';
-import path from 'node:path';
+import { rawPosts } from './posts.generated';
 
 export type BlogPost = {
   slug: string;
@@ -8,17 +7,16 @@ export type BlogPost = {
   content: string;
 };
 
-const postsDirectory = path.join(process.cwd(), 'app', 'blog', 'posts');
 const postFilename = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
 
 export function getPosts(): BlogPost[] {
-  return readdirSync(postsDirectory)
-    .flatMap((filename) => {
+  return Object.entries(rawPosts)
+    .flatMap(([filename, source]) => {
       const match = filename.match(postFilename);
       if (!match) return [];
 
       const [, date, slug] = match;
-      const markdown = readFileSync(path.join(postsDirectory, filename), 'utf8').trim();
+      const markdown = source.trim();
       const [heading, ...body] = markdown.split(/\r?\n/);
       if (!heading.startsWith('# ')) {
         throw new Error(`Blog post ${filename} must start with an H1 title`);
