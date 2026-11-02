@@ -19,7 +19,7 @@ const featuredProjects = [
   {
     title: 'pod',
     description: 'an electron desktop app that turns text-based pdfs into two-voice podcasts and saves the generated mp3 and script locally.',
-    href: 'https://github.com/sushilbang/pod',
+    href: 'https://pod.sushilbang.com',
     tags: ['Electron', 'TypeScript', 'Python', 'ElevenLabs'],
   },
 ];
