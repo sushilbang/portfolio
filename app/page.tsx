@@ -13,7 +13,7 @@ const featuredProjects = [
   {
     title: 'code-agent',
     description: 'a desktop coding agent with a local file explorer, monaco editor, persistent chats, streamed responses, and approval-gated file tools.',
-    href: 'https://github.com/sushilbang/code-agent',
+    href: 'https://code-agent.sushilbang.com',
     tags: ['TypeScript', 'Electron', 'React', 'Monaco'],
   },
   {

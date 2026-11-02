@@ -6,8 +6,7 @@ const projects = {
     {
       title: 'code-agent',
       description: 'a desktop coding-agent workspace with a local file explorer, monaco editor, persistent chats, streamed openai responses, and approval-gated file tools.',
-      href: 'https://github.com/sushilbang/code-agent',
-      siteHref: 'https://code-agent.sushilbang.com',
+      href: 'https://code-agent.sushilbang.com',
       technologies: ['TypeScript', 'Electron', 'React', 'Monaco'],
       details: [
         'Combines a local file explorer and Monaco editor with resizable, collapsible explorer and agent panes inside an Electron desktop app.',
@@ -129,17 +128,6 @@ export default function ProjectsPage() {
                   className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
                 />
               </a>
-              {'siteHref' in project && project.siteHref && (
-                <a
-                  href={project.siteHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-3 inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  website
-                  <ArrowUpRight size={12} />
-                </a>
-              )}
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                 {project.description}
               </p>
