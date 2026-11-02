@@ -7,6 +7,7 @@ const projects = {
       title: 'code-agent',
       description: 'a desktop coding-agent workspace with a local file explorer, monaco editor, persistent chats, streamed openai responses, and approval-gated file tools.',
       href: 'https://code-agent.sushilbang.com',
+      sourceHref: 'https://github.com/sushilbang/code-agent',
       technologies: ['TypeScript', 'Electron', 'React', 'Monaco'],
       details: [
         'Combines a local file explorer and Monaco editor with resizable, collapsible explorer and agent panes inside an Electron desktop app.',
@@ -40,18 +41,6 @@ const projects = {
       ],
     },
     {
-      title: 'zerohunger',
-      description: 'a simple app to stop food waste. list surplus meals, connect with nearby ngos or people in need, and donate with a tap. built for latrobe tigc and backed with 27,000 inr in funding.',
-      href: 'https://github.com/sushilbang/zero-hunger',
-      technologies: ['React Native', 'Expo', 'Firebase'],
-      details: [
-        'Built as an Expo and React Native app for tracking food inventory and turning surplus items into donations.',
-        'Includes donation, inventory, expiry-alert, recipe, profile, onboarding, and camera-scanner experiences.',
-        'Uses Firebase authentication and Firestore with protected routes, email verification, and persisted user sessions.',
-        'Supports background tasks and notifications so users can act on expiring food before it becomes waste.',
-      ],
-    },
-    {
       title: 'devlogr',
       description: 'a tiny cli buddy for developers who forget what they did yesterday. log your progress straight from the terminal, no context-switching needed. built in rust because speed matters when you\'re in the zone.',
       href: 'https://github.com/sushilbang/devlogr',
@@ -61,18 +50,6 @@ const projects = {
         'Lists the complete project history with devlogr list, making standups and progress recaps easier to write.',
         'Stores entries in a .devlog.json file in the current directory, so each project keeps an independent log.',
         'Ships as a lightweight Rust CLI that can be installed directly through Cargo.',
-      ],
-    },
-    {
-      title: 'shodhak',
-      description: 'a typescript research-agent backend that searches scholarly sources, analyzes papers, and builds cited literature reviews with an openai-powered agent loop.',
-      href: 'https://github.com/sushilbang/shodhak',
-      technologies: ['TypeScript', 'Express', 'PostgreSQL', 'OpenAI'],
-      details: [
-        'Searches arXiv, Crossref, OpenAlex, PubMed, and Semantic Scholar through a shared paper-provider interface.',
-        'Combines query refinement and expansion with embeddings, reranking, extraction, knowledge storage, and context compression.',
-        'Provides agent tools for search, paper analysis, context, and knowledge workflows, exposed through an Express API.',
-        'Includes dedicated retrieval, generation, citation, fact, race, and deep-research benchmarks alongside Vitest coverage.',
       ],
     },
   ],
@@ -128,6 +105,17 @@ export default function ProjectsPage() {
                   className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
                 />
               </a>
+              {'sourceHref' in project && project.sourceHref && (
+                <a
+                  href={project.sourceHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-3 inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  source
+                  <ArrowUpRight size={12} />
+                </a>
+              )}
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                 {project.description}
               </p>
