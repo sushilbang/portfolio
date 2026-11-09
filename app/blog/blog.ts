@@ -4,7 +4,17 @@ export type BlogPost = {
   slug: string;
   title: string;
   date: string;
+  tags: string[];
   content: string;
+};
+
+// Tags per post, keyed by slug (the filename without its date prefix).
+const postTags: Record<string, string[]> = {
+  'redis': ['redis', 'caching', 'backend'],
+  'do-i-really-understand-authentication': ['authentication', 'jwt', 'backend'],
+  'fastapi-and-celery': ['fastapi', 'celery', 'python', 'backend'],
+  'a-coding-agent-is-a-context-engine-before-its-an-editor': ['ai agents', 'context engineering', 'llm'],
+  'why-tool-permissions-belong-outside-the-model': ['ai agents', 'security', 'llm'],
 };
 
 const postFilename = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
@@ -22,7 +32,7 @@ export function getPosts(): BlogPost[] {
         throw new Error(`Blog post ${filename} must start with an H1 title`);
       }
 
-      return [{ slug, title: heading.slice(2), date, content: body.join('\n').trim() }];
+      return [{ slug, title: heading.slice(2), date, tags: postTags[slug] ?? [], content: body.join('\n').trim() }];
     })
     .sort((a, b) => {
       const dateOrder = b.date.localeCompare(a.date);

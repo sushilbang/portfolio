@@ -42,6 +42,13 @@ export default async function PostPage({ params }: Props) {
         <h1 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
           {post.title}
         </h1>
+        <div className="mt-4 flex flex-wrap gap-1.5">
+          {post.tags.map((tag) => (
+            <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
+              {tag}
+            </span>
+          ))}
+        </div>
       </header>
 
       <div className="blog-prose pt-10">

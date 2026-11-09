@@ -27,19 +27,28 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex items-center justify-between gap-4"
+              className="group block"
             >
-              <h3 className="text-sm group-hover:text-primary transition-colors">
-                {post.title}
-              </h3>
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <time dateTime={post.date} className="text-xs text-muted-foreground">
-                  {formatPostDate(post.date)}
-                </time>
-                <ArrowRight
-                  size={12}
-                  className="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
-                />
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-sm group-hover:text-primary transition-colors">
+                  {post.title}
+                </h3>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <time dateTime={post.date} className="text-xs text-muted-foreground">
+                    {formatPostDate(post.date)}
+                  </time>
+                  <ArrowRight
+                    size={12}
+                    className="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground"
+                  />
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {post.tags.map((tag) => (
+                  <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </Link>
           ))}
