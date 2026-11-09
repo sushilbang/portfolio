@@ -42,18 +42,21 @@ const experience = [
 ];
 
 const skills = [
-  'JavaScript',
-  'TypeScript',
   'Python',
-  'React',
-  'Next.js',
-  'Node.js',
+  'TypeScript',
+  'LLM Agents',
+  'Google ADK',
+  'MCP',
+  'Prompt Engineering',
+  'Agent Evaluation',
+  'RAG',
+  'Tool Calling',
+  'Semantic Layers',
   'FastAPI',
+  'GCP',
+  'BigQuery',
   'PostgreSQL',
-  'MongoDB',
-  'Redis',
   'Docker',
-  'AWS',
   'Git',
 ];
 
