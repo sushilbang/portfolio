@@ -250,6 +250,8 @@ p {
   border-radius: 0.5rem;
   background: var(--muted);
   padding: 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
 }
 
 .blog-prose pre code { padding: 0; }
