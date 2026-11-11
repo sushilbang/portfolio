@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import Markdown from 'react-markdown';
 import { formatPostDate, getPost, getPosts } from '../blog';
+import { blogComponents } from '@/components/blog/markdown';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -52,7 +53,7 @@ export default async function PostPage({ params }: Props) {
       </header>
 
       <div className="blog-prose pt-10">
-        <Markdown>{post.content}</Markdown>
+        <Markdown components={blogComponents}>{post.content}</Markdown>
       </div>
     </article>
   );

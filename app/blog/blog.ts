@@ -15,6 +15,7 @@ const postTags: Record<string, string[]> = {
   'fastapi-and-celery': ['fastapi', 'celery', 'python', 'backend'],
   'a-coding-agent-is-a-context-engine-before-its-an-editor': ['ai agents', 'context engineering', 'llm'],
   'why-tool-permissions-belong-outside-the-model': ['ai agents', 'security', 'llm'],
+  'how-a-coding-agent-sees-a-codebase-as-a-graph': ['ai agents', 'knowledge graph', 'static analysis'],
 };
 
 const postFilename = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
